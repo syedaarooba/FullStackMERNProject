@@ -13,7 +13,7 @@ const port = process.env.PORT || 4000;
 connectDB();
 connectCloudinary();
 
-// CORS MIDDLEWARE - SABSE PEHLE LAGAO
+// CORS MIDDLEWARE - All custom headers allowed
 app.use(
   cors({
     origin: [
@@ -24,8 +24,8 @@ app.use(
       "http://localhost:5174",
     ],
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"], // ← Yeh add karo
-    allowedHeaders: ["Content-Type", "Authorization", "atoken"],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    allowedHeaders: "*", // ← SAB HEADERS ALLOW (Best solution)
   })
 );
 
