@@ -3,7 +3,7 @@
   2, "builds";
   [
     {
-      src: "index.js",
+      src: "server.js",
       use: "@vercel/node",
     },
   ],
@@ -11,7 +11,7 @@
   [
     {
       src: "/(.*)",
-      dest: "index.js",
+      dest: "server.js",
     },
   ];
 }
