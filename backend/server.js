@@ -25,7 +25,7 @@ app.use(
     ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"], // ← Yeh add karo
-    allowedHeaders: ["Content-Type", "Authorization", "token"],
+    allowedHeaders: ["Content-Type", "Authorization", "atoken"],
   })
 );
 
