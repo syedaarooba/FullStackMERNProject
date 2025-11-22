@@ -26,6 +26,7 @@ const Login = () => {
         localStorage.setItem('token', data.token)
         setToken(data.token)
       } else {
+        
         toast.error(data.message)
       }
 
