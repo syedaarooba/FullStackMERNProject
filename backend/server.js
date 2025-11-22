@@ -24,7 +24,7 @@ app.use(
       "http://localhost:5174",
     ],
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"], // ← Yeh add karo
     allowedHeaders: ["Content-Type", "Authorization", "token"],
   })
 );
