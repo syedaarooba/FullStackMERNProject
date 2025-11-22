@@ -13,10 +13,7 @@ const port = process.env.PORT || 4000;
 connectDB();
 connectCloudinary();
 
-// middlewares
-app.use(express.json());
-
-// CORS Configuration - Frontend and Admin URLs
+// CORS MIDDLEWARE - SABSE PEHLE LAGAO
 app.use(
   cors({
     origin: [
@@ -28,9 +25,12 @@ app.use(
     ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    allowedHeaders: ["Content-Type", "Authorization", "token"],
   })
 );
+
+// middlewares
+app.use(express.json());
 
 // api endpoints
 app.use("/api/user", userRouter);
