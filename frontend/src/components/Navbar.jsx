@@ -52,6 +52,16 @@ const Navbar = () => {
               )}
             </NavLink>
           ))}
+
+          {/* ⭐ Admin Panel Button (Desktop) ⭐ */}
+          <a
+            href="https://admin-two-murex.vercel.app/"
+            target="_blank"
+            rel="noreferrer"
+            className="border px-5 py-1.5 rounded-full text-xs font-medium hover:bg-[#5f6fff] hover:text-white transition"
+          >
+            Admin Panel
+          </a>
         </ul>
 
         {/* -------- Right Section -------- */}
@@ -145,6 +155,17 @@ const Navbar = () => {
                 {item.name}
               </NavLink>
             ))}
+
+            {/* Admin Panel Button (Mobile) */}
+            <a
+              href="https://admin-two-murex.vercel.app/"
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setShowMenu(false)}
+              className="border px-5 py-2 rounded-full text-sm font-medium hover:bg-[#5f6fff] hover:text-white transition"
+            >
+              Admin Panel
+            </a>
           </ul>
 
           {!token && (
