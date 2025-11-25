@@ -21,11 +21,11 @@ const DoctorsList = () => {
     if (aToken) {
       getAllDoctors();
     }
-  }, [aToken]);
+  }, [aToken, getAllDoctors]);
 
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
-  // ✅ Delete Doctor
+  // ✅ Delete Doctor (same)
   const deleteDoctor = async (docId) => {
     try {
       if (!window.confirm("Are you sure you want to delete this doctor?"))
@@ -48,27 +48,23 @@ const DoctorsList = () => {
     }
   };
 
-  // ✅ Update Doctor
-  const updateDoctor = async (docId) => {
-    const newName = prompt("Enter updated doctor name:");
-    if (!newName) return toast.info("Update cancelled.");
+  // ✅ Availability Toggle Handler (NEW)
+  const handleAvailabilityToggle = async (doc) => {
+    const nextAvailability = !doc.available; // next state
 
     try {
-      const { data } = await axios.put(
-        `${backendUrl}/api/admin/update-doctor/${docId}`,
-        { name: newName },
-        { headers: { aToken } }
-      );
+      // backend/context update
+      await changeAvailability(doc._id);
 
-      if (data.success) {
-        toast.success("Doctor updated successfully!");
-        getAllDoctors();
+      // toast
+      if (nextAvailability) {
+        toast.success("Doctor is now Available ✅");
       } else {
-        toast.error(data.message);
+        toast.info("Doctor is now Unavailable ❌");
       }
-    } catch (error) {
-      toast.error(error.message);
-      console.log(error);
+    } catch (err) {
+      toast.error("Failed to change availability");
+      console.log(err);
     }
   };
 
@@ -107,20 +103,22 @@ const DoctorsList = () => {
               <h2 className="text-lg font-semibold text-[#0B0C60] flex items-center gap-2">
                 <FaUserMd className="text-[#5f6fff]" /> {item.name}
               </h2>
+
               <p className="text-sm text-gray-500 flex items-center gap-2">
                 <FaBriefcase className="text-[#5f6fff]" /> {item.speciality}
               </p>
+
               <p className="text-sm text-gray-400 flex items-center gap-2">
                 <FaEnvelope className="text-[#5f6fff]" /> {item.email}
               </p>
 
-              {/* Availability Toggle */}
+              {/* Availability Toggle (UPDATED) */}
               <div className="mt-2 flex items-center gap-3">
                 <label className="flex items-center gap-2 cursor-pointer">
                   <input
                     type="checkbox"
                     checked={item.available}
-                    onChange={() => changeAvailability(item._id)}
+                    onChange={() => handleAvailabilityToggle(item)}
                     className="w-4 h-4 accent-[#5f6fff] cursor-pointer"
                   />
                   <span className="text-sm text-gray-600">
@@ -138,6 +136,7 @@ const DoctorsList = () => {
                 >
                   <FaEdit /> Edit
                 </button>
+
                 <button
                   onClick={() => deleteDoctor(item._id)}
                   className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full text-sm font-medium shadow-md transition-all duration-300 hover:shadow-lg"
