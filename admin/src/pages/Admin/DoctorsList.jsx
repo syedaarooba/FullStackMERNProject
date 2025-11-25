@@ -6,6 +6,8 @@ import {
   FaUserMd,
   FaEnvelope,
   FaBriefcase,
+  FaCheckCircle,
+  FaTimesCircle,
 } from "react-icons/fa";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -48,19 +50,27 @@ const DoctorsList = () => {
     }
   };
 
-  // ✅ Availability Toggle Handler (NEW)
+  // ✅ Availability Toggle Handler (UPDATED ONLY TOAST)
   const handleAvailabilityToggle = async (doc) => {
-    const nextAvailability = !doc.available; // next state
+    const nextAvailability = !doc.available;
 
     try {
-      // backend/context update
       await changeAvailability(doc._id);
 
-      // toast
       if (nextAvailability) {
-        toast.success("Doctor is now Available ✅");
+        toast.success(
+          <span className="flex items-center gap-2">
+            <FaCheckCircle className="text-green-600" />
+            Dr is now Available
+          </span>
+        );
       } else {
-        toast.info("Doctor is now Unavailable ❌");
+        toast.info(
+          <span className="flex items-center gap-2">
+            <FaTimesCircle className="text-gray-600" />
+            Dr is now Unavailable
+          </span>
+        );
       }
     } catch (err) {
       toast.error("Failed to change availability");
@@ -112,7 +122,7 @@ const DoctorsList = () => {
                 <FaEnvelope className="text-[#5f6fff]" /> {item.email}
               </p>
 
-              {/* Availability Toggle (UPDATED) */}
+              {/* Availability Toggle */}
               <div className="mt-2 flex items-center gap-3">
                 <label className="flex items-center gap-2 cursor-pointer">
                   <input
