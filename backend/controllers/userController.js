@@ -6,7 +6,6 @@ import doctorModel from "../models/doctorModel.js";
 import appointmentModel from "../models/appointmentModel.js";
 import { v2 as cloudinary } from "cloudinary";
 import stripe from "stripe";
-import razorpay from "razorpay";
 
 // Gateway Initialize
 const stripeInstance = new stripe(process.env.STRIPE_SECRET_KEY);
@@ -73,8 +72,6 @@ const registerUser = async (req, res) => {
         message: "This email is already registered.",
       });
     }
-
-    console.log(error);
     res.json({ success: false, message: error.message });
   }
 };
