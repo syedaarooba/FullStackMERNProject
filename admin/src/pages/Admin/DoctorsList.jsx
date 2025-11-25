@@ -59,10 +59,7 @@ const DoctorsList = () => {
 
       if (nextAvailability) {
         toast.success(
-          <span className="flex items-center gap-2">
-            <FaCheckCircle className="text-green-600" />
-            Dr is now Available
-          </span>
+          <span className="flex items-center gap-2">Dr is now Available</span>
         );
       } else {
         toast.info(
