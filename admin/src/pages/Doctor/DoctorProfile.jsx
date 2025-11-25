@@ -10,13 +10,14 @@ const DoctorProfile = () => {
   const { currency, backendUrl } = useContext(AppContext);
   const [isEdit, setIsEdit] = useState(false);
 
+  // ✅ UPDATE PROFILE (NOW ONLY OTHER FIELDS, NOT availability)
   const updateProfile = async () => {
     try {
       const updateData = {
         address: profileData.address,
         fees: profileData.fees,
         about: profileData.about,
-        available: profileData.available,
+        // ❌ available removed from here
       };
 
       const { data } = await axios.post(
@@ -40,11 +41,52 @@ const DoctorProfile = () => {
     }
   };
 
+  // ✅ INSTANT AVAILABILITY TOGGLE (SEPARATE API CALL)
+  const toggleAvailability = async () => {
+    const newAvailability = !profileData.available;
+
+    // optimistic UI update (instant checkbox change)
+    setProfileData((prev) => ({
+      ...prev,
+      available: newAvailability,
+    }));
+
+    try {
+      const { data } = await axios.post(
+        backendUrl + "/api/doctor/update-profile",
+        { available: newAvailability }, // ✅ only availability update
+        { headers: { dToken } }
+      );
+
+      if (data.success) {
+        toast.success(
+          newAvailability ? "Dr is now Available" : "Dr is now Unavailable"
+        );
+        getProfileData();
+      } else {
+        toast.error(data.message);
+        // revert UI if failed
+        setProfileData((prev) => ({
+          ...prev,
+          available: !newAvailability,
+        }));
+      }
+    } catch (error) {
+      toast.error(error.message);
+      // revert UI if failed
+      setProfileData((prev) => ({
+        ...prev,
+        available: !newAvailability,
+      }));
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     if (dToken) {
       getProfileData();
     }
-  }, [dToken]);
+  }, [dToken, getProfileData]);
 
   return (
     profileData && (
@@ -76,17 +118,11 @@ const DoctorProfile = () => {
               {profileData.experience} Experience
             </span>
 
-            {/* Available Toggle */}
+            {/* ✅ Available Toggle (NOW ALWAYS WORKS) */}
             <div className="mt-5 flex items-center gap-2 text-sm">
               <input
                 type="checkbox"
-                onChange={() =>
-                  isEdit &&
-                  setProfileData((prev) => ({
-                    ...prev,
-                    available: !prev.available,
-                  }))
-                }
+                onChange={toggleAvailability} // ✅ direct toggle
                 checked={profileData.available}
                 className="w-4 h-4 accent-[#5f6fff] cursor-pointer"
               />
@@ -95,7 +131,7 @@ const DoctorProfile = () => {
               </label>
             </div>
 
-            {/* Action Button */}
+            {/* Action Button (ONLY ONE SAVE BUTTON) */}
             <div className="mt-6 w-full">
               {isEdit ? (
                 <button
@@ -217,21 +253,15 @@ const DoctorProfile = () => {
                 </div>
               </div>
 
-              {/* Bottom Buttons (only in edit mode) */}
+              {/* Bottom Buttons (NO SAVE HERE NOW, ONLY CANCEL) */}
               {isEdit && (
-                <div className="mt-6 flex flex-col sm:flex-row gap-3">
-                  <button
-                    onClick={updateProfile}
-                    className="flex-1 bg-[#5f6fff] text-white py-2.5 rounded-xl font-medium hover:bg-[#4e5ae3] transition"
-                  >
-                    Save Information
-                  </button>
+                <div className="mt-6">
                   <button
                     onClick={() => {
                       setIsEdit(false);
                       getProfileData();
                     }}
-                    className="flex-1 border border-gray-300 text-gray-700 py-2.5 rounded-xl font-medium hover:bg-gray-50 transition"
+                    className="w-full sm:w-auto border border-gray-300 text-gray-700 py-2.5 px-6 rounded-xl font-medium hover:bg-gray-50 transition"
                   >
                     Cancel
                   </button>
