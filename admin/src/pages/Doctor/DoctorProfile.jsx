@@ -10,14 +10,14 @@ const DoctorProfile = () => {
   const { currency, backendUrl } = useContext(AppContext);
   const [isEdit, setIsEdit] = useState(false);
 
-  // ✅ UPDATE PROFILE (NOW ONLY OTHER FIELDS, NOT availability)
+  // ✅ SAME updateProfile FUNCTION (NO CHANGE)
   const updateProfile = async () => {
     try {
       const updateData = {
         address: profileData.address,
         fees: profileData.fees,
         about: profileData.about,
-        // ❌ available removed from here
+        available: profileData.available, // same as before
       };
 
       const { data } = await axios.post(
@@ -41,11 +41,11 @@ const DoctorProfile = () => {
     }
   };
 
-  // ✅ INSTANT AVAILABILITY TOGGLE (SEPARATE API CALL)
+  // ✅ NEW: availability instantly update on toggle
   const toggleAvailability = async () => {
     const newAvailability = !profileData.available;
 
-    // optimistic UI update (instant checkbox change)
+    // instant UI change (optimistic)
     setProfileData((prev) => ({
       ...prev,
       available: newAvailability,
@@ -54,7 +54,7 @@ const DoctorProfile = () => {
     try {
       const { data } = await axios.post(
         backendUrl + "/api/doctor/update-profile",
-        { available: newAvailability }, // ✅ only availability update
+        { available: newAvailability }, // only availability update
         { headers: { dToken } }
       );
 
@@ -65,7 +65,7 @@ const DoctorProfile = () => {
         getProfileData();
       } else {
         toast.error(data.message);
-        // revert UI if failed
+        // revert if backend fails
         setProfileData((prev) => ({
           ...prev,
           available: !newAvailability,
@@ -73,7 +73,7 @@ const DoctorProfile = () => {
       }
     } catch (error) {
       toast.error(error.message);
-      // revert UI if failed
+      // revert if error
       setProfileData((prev) => ({
         ...prev,
         available: !newAvailability,
@@ -86,7 +86,7 @@ const DoctorProfile = () => {
     if (dToken) {
       getProfileData();
     }
-  }, [dToken, getProfileData]);
+  }, [dToken]);
 
   return (
     profileData && (
@@ -118,11 +118,11 @@ const DoctorProfile = () => {
               {profileData.experience} Experience
             </span>
 
-            {/* ✅ Available Toggle (NOW ALWAYS WORKS) */}
+            {/* ✅ Available Toggle (ONLY CHANGE HERE) */}
             <div className="mt-5 flex items-center gap-2 text-sm">
               <input
                 type="checkbox"
-                onChange={toggleAvailability} // ✅ direct toggle
+                onChange={toggleAvailability}  // ✅ now updates instantly
                 checked={profileData.available}
                 className="w-4 h-4 accent-[#5f6fff] cursor-pointer"
               />
@@ -131,7 +131,7 @@ const DoctorProfile = () => {
               </label>
             </div>
 
-            {/* Action Button (ONLY ONE SAVE BUTTON) */}
+            {/* Action Button (SAME AS BEFORE) */}
             <div className="mt-6 w-full">
               {isEdit ? (
                 <button
@@ -253,15 +253,21 @@ const DoctorProfile = () => {
                 </div>
               </div>
 
-              {/* Bottom Buttons (NO SAVE HERE NOW, ONLY CANCEL) */}
+              {/* Bottom Buttons (SAME AS BEFORE) */}
               {isEdit && (
-                <div className="mt-6">
+                <div className="mt-6 flex flex-col sm:flex-row gap-3">
+                  <button
+                    onClick={updateProfile}
+                    className="flex-1 bg-[#5f6fff] text-white py-2.5 rounded-xl font-medium hover:bg-[#4e5ae3] transition"
+                  >
+                    Save Information
+                  </button>
                   <button
                     onClick={() => {
                       setIsEdit(false);
                       getProfileData();
                     }}
-                    className="w-full sm:w-auto border border-gray-300 text-gray-700 py-2.5 px-6 rounded-xl font-medium hover:bg-gray-50 transition"
+                    className="flex-1 border border-gray-300 text-gray-700 py-2.5 rounded-xl font-medium hover:bg-gray-50 transition"
                   >
                     Cancel
                   </button>
