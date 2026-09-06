@@ -8,7 +8,7 @@ import {
   FaMapMarkerAlt,
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { assets } from "../assets/assets";
+import Logo from "./Logo";
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -19,31 +19,22 @@ const Footer = () => {
   };
 
   return (
-    <footer className="w-full bg-gradient-to-b from-white to-[#eef1ff] text-gray-800 border-t border-gray-200 mt-20">
+    <footer className="w-full bg-slate-100/70 dark:bg-slate-900 border-t border-slate-200/80 dark:border-slate-800 text-slate-600 dark:text-slate-300 mt-20 transition-colors duration-200">
       {/* ---------- Main Content ---------- */}
-      <div className="max-w-[1300px] mx-auto px-6 sm:px-10 lg:px-16 py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="max-w-[1300px] mx-auto px-4 sm:px-8 md:px-10 py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        
         {/* ---------- Left Section ---------- */}
-        <div>
-          <div
-            onClick={() => handleNavigate("/")}
-            className="flex items-center gap-2 mb-5 cursor-pointer"
-          >
-            <img
-              src={assets.logo}
-              alt="Medico Logo"
-              className="w-40 sm:w-48 drop-shadow-md"
-            />
-          </div>
+        <div className="space-y-4">
+          <Logo onClick={() => handleNavigate("/")} />
 
-          <p className="text-gray-600 leading-relaxed text-sm sm:text-base max-w-sm">
-            <span className="font-semibold text-[#5f6fff]">Prescripto</span>{" "}
-            makes healthcare simple. Book trusted doctors, manage appointments,
-            and consult online from the comfort of your home. Your well-being,
-            simplified with technology.
+          <p className="text-slate-500 dark:text-slate-400 leading-relaxed text-sm max-w-sm pt-2">
+            <span className="font-semibold text-primary dark:text-indigo-400">Prescripto</span>{" "}
+            makes healthcare simple, fast, and accessible. Book certified doctors,
+            manage appointments, and consult with total confidence.
           </p>
 
           {/* ---------- Social Icons ---------- */}
-          <div className="flex gap-4 mt-6">
+          <div className="flex gap-3 pt-2">
             {[
               { icon: FaFacebookF, link: "https://facebook.com" },
               { icon: FaTwitter, link: "https://twitter.com" },
@@ -54,9 +45,9 @@ const Footer = () => {
                 href={item.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 bg-white shadow-md rounded-full text-[#5f6fff] hover:bg-[#5f6fff] hover:text-white transition-all duration-300 transform hover:scale-110"
+                className="w-9 h-9 flex items-center justify-center bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm rounded-full text-primary dark:text-indigo-400 hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white hover:scale-110 transition-all duration-200"
               >
-                <item.icon size={16} />
+                <item.icon size={14} />
               </a>
             ))}
           </div>
@@ -64,10 +55,10 @@ const Footer = () => {
 
         {/* ---------- Company Links ---------- */}
         <div>
-          <h3 className="font-semibold text-lg sm:text-xl mb-5 text-gray-900">
+          <h3 className="font-bold text-base sm:text-lg mb-4 text-slate-900 dark:text-white tracking-tight">
             Company
           </h3>
-          <ul className="space-y-3 text-gray-600 text-sm sm:text-base">
+          <ul className="space-y-2.5 text-sm">
             {[
               { name: "Home", path: "/" },
               { name: "About Us", path: "/about" },
@@ -77,7 +68,7 @@ const Footer = () => {
               <li
                 key={index}
                 onClick={() => handleNavigate(item.path)}
-                className="hover:text-[#5f6fff] cursor-pointer transition-colors duration-200"
+                className="hover:text-primary dark:hover:text-indigo-400 cursor-pointer transition-colors duration-200 font-medium"
               >
                 {item.name}
               </li>
@@ -87,10 +78,10 @@ const Footer = () => {
 
         {/* ---------- Services Links ---------- */}
         <div>
-          <h3 className="font-semibold text-lg sm:text-xl mb-5 text-gray-900">
+          <h3 className="font-bold text-base sm:text-lg mb-4 text-slate-900 dark:text-white tracking-tight">
             Our Services
           </h3>
-          <ul className="space-y-3 text-gray-600 text-sm sm:text-base">
+          <ul className="space-y-2.5 text-sm">
             {[
               "Online Consultation",
               "Appointment Scheduling",
@@ -99,7 +90,8 @@ const Footer = () => {
             ].map((service, index) => (
               <li
                 key={index}
-                className="hover:text-[#5f6fff] cursor-pointer transition-colors duration-200"
+                onClick={() => handleNavigate("/doctors")}
+                className="hover:text-primary dark:hover:text-indigo-400 cursor-pointer transition-colors duration-200 font-medium"
               >
                 {service}
               </li>
@@ -109,31 +101,31 @@ const Footer = () => {
 
         {/* ---------- Contact Info ---------- */}
         <div>
-          <h3 className="font-semibold text-lg sm:text-xl mb-5 text-gray-900">
+          <h3 className="font-bold text-base sm:text-lg mb-4 text-slate-900 dark:text-white tracking-tight">
             Get in Touch
           </h3>
-          <ul className="space-y-5 text-gray-600 text-sm sm:text-base">
-            <li className="flex items-center gap-3 hover:text-[#5f6fff] transition-colors duration-200">
-              <FaPhoneAlt className="text-[#5f6fff] text-lg" />
-              <span className="font-medium">+1 (555) 987-6543</span>
+          <ul className="space-y-3.5 text-sm">
+            <li className="flex items-center gap-3 font-medium hover:text-primary dark:hover:text-indigo-400 transition-colors duration-200">
+              <div className="w-8 h-8 rounded-full bg-primary-50 dark:bg-slate-800 flex items-center justify-center text-primary dark:text-indigo-400">
+                <FaPhoneAlt size={12} />
+              </div>
+              <span>+1 (555) 987-6543</span>
             </li>
 
-            {/* 💌 Email with Icon */}
-            <li className="flex items-center gap-3 hover:text-[#5f6fff] transition-colors duration-200">
-              <div className="flex items-center justify-center w-9 h-9 rounded-full bg-[#5f6fff]/10 text-[#5f6fff]">
-                <FaEnvelope className="text-lg" />
+            <li className="flex items-center gap-3 font-medium hover:text-primary dark:hover:text-indigo-400 transition-colors duration-200">
+              <div className="w-8 h-8 rounded-full bg-primary-50 dark:bg-slate-800 flex items-center justify-center text-primary dark:text-indigo-400">
+                <FaEnvelope size={12} />
               </div>
-              <a
-                href="mailto:support@medicohealth.com"
-                className="font-medium hover:underline"
-              >
+              <a href="mailto:support@prescripto.com" className="hover:underline">
                 support@prescripto.com
               </a>
             </li>
 
-            <li className="flex items-start gap-3 hover:text-[#5f6fff] transition-colors duration-200">
-              <FaMapMarkerAlt className="text-[#5f6fff] text-lg mt-1" />
-              <span className="leading-snug">
+            <li className="flex items-start gap-3 hover:text-primary dark:hover:text-indigo-400 transition-colors duration-200">
+              <div className="w-8 h-8 rounded-full bg-primary-50 dark:bg-slate-800 flex items-center justify-center text-primary dark:text-indigo-400 mt-0.5">
+                <FaMapMarkerAlt size={13} />
+              </div>
+              <span className="leading-relaxed">
                 456 Wellness Avenue, <br /> San Francisco, CA, USA
               </span>
             </li>
@@ -141,15 +133,11 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* ---------- Divider ---------- */}
-      <div className="border-t border-gray-300 w-full"></div>
-
       {/* ---------- Bottom Section ---------- */}
-      <div className="w-full bg-[#5f6fff] text-white text-center py-5 text-sm sm:text-base">
+      <div className="w-full bg-slate-200/80 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800/80 text-center py-4 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
         <p>
           © {new Date().getFullYear()}{" "}
-          <span className="font-semibold">Prescripto</span> — Empowering better
-          health, one click at a time.
+          <span className="font-bold text-slate-800 dark:text-slate-200">Prescripto</span> — Empowering better health, one click at a time.
         </p>
       </div>
     </footer>
@@ -157,3 +145,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

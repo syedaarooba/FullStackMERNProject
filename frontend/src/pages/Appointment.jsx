@@ -11,6 +11,7 @@ import {
   FaChevronLeft,
   FaChevronRight,
 } from "react-icons/fa";
+import { FiCheckCircle, FiShield } from "react-icons/fi";
 
 const Appointment = () => {
   const { docId } = useParams();
@@ -70,6 +71,7 @@ const Appointment = () => {
         const slotTime = formattedTime;
 
         const isSlotAvailable =
+          docInfo.slots_booked &&
           docInfo.slots_booked[slotDate] &&
           docInfo.slots_booked[slotDate].includes(slotTime)
             ? false
@@ -137,45 +139,74 @@ const Appointment = () => {
 
   return (
     docInfo && (
-      <div className="p-4 md:p-10">
-        {/* ---------- Doctor Details ----------- */}
-        <div className="flex flex-col sm:flex-row gap-6">
-          <img
-            className="w-full sm:max-w-72 rounded-2xl shadow-lg object-cover"
-            src={docInfo.image}
-            alt={docInfo.name}
-          />
-          <div className="flex-1 border border-gray-100 rounded-2xl p-6 bg-white shadow-md hover:shadow-lg transition-shadow duration-300">
-            <p className="flex items-center gap-2 text-3xl font-bold text-gray-800">
-              {docInfo.name}
-              <img className="w-5" src={assets.verified_icon} alt="" />
-            </p>
-            <p className="text-gray-600 mt-2">
-              {docInfo.degree} • {docInfo.speciality}
-              <span className="ml-2 text-xs bg-blue-100 text-blue-600 px-2 py-0.5 rounded-full">
-                {docInfo.experience}
-              </span>
-            </p>
-            <p className="mt-4 text-gray-700 leading-relaxed">
-              {docInfo.about}
-            </p>
-            <p className="text-gray-700 font-semibold mt-4">
-              Fee:{" "}
-              <span className="text-gray-900">
-                {currencySymbol}
-                {docInfo.fees}
-              </span>
-            </p>
+      <div className="py-6 sm:py-10">
+        
+        {/* ---------- Doctor Details Card ----------- */}
+        <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col md:flex-row gap-8 items-start">
+          
+          {/* Doctor Image */}
+          <div className="w-full md:w-72 flex-shrink-0 bg-gradient-to-b from-indigo-50/60 to-slate-100/60 dark:from-slate-800 dark:to-slate-800/80 rounded-2xl overflow-hidden p-2 flex items-center justify-center">
+            <img
+              className="w-full h-72 object-cover object-top rounded-xl"
+              src={docInfo.image}
+              alt={docInfo.name}
+            />
           </div>
+
+          {/* Doctor Info */}
+          <div className="flex-1 space-y-4">
+            <div>
+              <div className="flex items-center gap-2.5">
+                <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                  {docInfo.name}
+                </h1>
+                <img className="w-5" src={assets.verified_icon} alt="Verified" />
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2.5 mt-2">
+                <span className="text-sm font-semibold text-primary dark:text-indigo-400">
+                  {docInfo.speciality}
+                </span>
+                <span className="text-xs text-slate-400">•</span>
+                <span className="text-xs font-medium text-slate-600 dark:text-slate-300">
+                  {docInfo.degree}
+                </span>
+                <span className="text-xs px-2.5 py-0.5 rounded-full font-bold bg-primary-50 dark:bg-slate-800 text-primary dark:text-indigo-400">
+                  {docInfo.experience}
+                </span>
+              </div>
+            </div>
+
+            <div className="pt-2 border-t border-slate-100 dark:border-slate-800">
+              <p className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-1.5">
+                About Specialist
+              </p>
+              <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                {docInfo.about}
+              </p>
+            </div>
+
+            <div className="pt-3 flex items-center gap-3">
+              <span className="text-sm text-slate-500 dark:text-slate-400 font-medium">
+                Appointment Fee:
+              </span>
+              <span className="text-lg font-extrabold text-primary dark:text-indigo-400 bg-primary-50 dark:bg-slate-800 px-3.5 py-1 rounded-xl">
+                {currencySymbol}{docInfo.fees}
+              </span>
+            </div>
+          </div>
+
         </div>
 
         {/* ---------- Booking Section ----------- */}
-        <div className="mt-12">
-          <h2 className="flex items-center gap-2 text-xl font-semibold text-gray-700 mb-4">
-            <FaCalendarAlt className="text-blue-600" /> Select Date
+        <div className="mt-12 bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm">
+          
+          <h2 className="flex items-center gap-2 text-xl font-bold text-slate-900 dark:text-white mb-5">
+            <FaCalendarAlt className="text-primary dark:text-indigo-400" /> 
+            <span>Select Appointment Date</span>
           </h2>
 
-          {/* Date Scroll */}
+          {/* Date Scroll List */}
           <div className="relative">
             <div
               ref={dateScrollRef}
@@ -184,17 +215,22 @@ const Appointment = () => {
               {docSlots.map((item, index) => (
                 <div
                   key={index}
-                  onClick={() => setSlotIndex(index)}
-                  className={`min-w-[70px] text-center rounded-2xl py-4 px-3 shadow-sm cursor-pointer transition-all duration-300 ${
+                  onClick={() => {
+                    setSlotIndex(index);
+                    setSlotTime("");
+                  }}
+                  className={`min-w-[76px] sm:min-w-[85px] text-center rounded-2xl py-4 px-3 cursor-pointer transition-all duration-300 border ${
                     slotIndex === index
-                      ? "bg-blue-600 text-white scale-105 shadow-md"
-                      : "bg-white border border-gray-300 hover:bg-gray-50"
+                      ? "bg-gradient-to-tr from-primary to-indigo-600 text-white border-primary shadow-lg shadow-primary/25 scale-105"
+                      : "bg-slate-50 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-primary-400 dark:hover:border-indigo-400"
                   }`}
                 >
-                  <p className="font-semibold">
+                  <p className="text-xs font-bold tracking-wider uppercase opacity-80">
                     {item[0] && daysOfWeek[item[0].datetime.getDay()]}
                   </p>
-                  <p>{item[0] && item[0].datetime.getDate()}</p>
+                  <p className="text-xl font-extrabold mt-1">
+                    {item[0] && item[0].datetime.getDate()}
+                  </p>
                 </div>
               ))}
             </div>
@@ -202,66 +238,71 @@ const Appointment = () => {
 
           {/* ---------- Select Time Section ---------- */}
           {slotIndex !== null && (
-            <>
-              <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-700 mt-8 mb-3">
-                <FaClock className="text-blue-600" /> Select Time
+            <div className="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800">
+              <h3 className="flex items-center gap-2 text-lg font-bold text-slate-900 dark:text-white mb-4">
+                <FaClock className="text-primary dark:text-indigo-400" /> 
+                <span>Select Time Slot</span>
               </h3>
 
-              <div className="relative flex items-center w-full max-w-4xl mx-auto">
+              <div className="relative flex items-center w-full max-w-4xl">
                 {/* Left Arrow */}
                 <button
                   onClick={() => scrollLeft(timeScrollRef)}
-                  className="absolute -left-5 md:-left-8 z-20 bg-white border border-gray-300 shadow-md hover:shadow-lg rounded-full p-2 flex items-center justify-center transition-all duration-200"
+                  className="absolute -left-3 md:-left-5 z-20 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-md rounded-full p-2.5 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-primary transition"
                 >
-                  <FaChevronLeft className="text-gray-600 hover:text-blue-600" />
+                  <FaChevronLeft size={12} />
                 </button>
-
-                {/* Fading Edges */}
-                <div className="absolute left-0 top-0 bottom-0 w-14 bg-gradient-to-r from-white to-transparent pointer-events-none"></div>
-                <div className="absolute right-0 top-0 bottom-0 w-14 bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
 
                 {/* Scrollable Time Slots */}
                 <div
                   ref={timeScrollRef}
-                  className="flex gap-3 overflow-x-auto px-8 py-2 scroll-smooth hide-scroll"
+                  className="flex gap-2.5 overflow-x-auto px-6 py-2 scroll-smooth hide-scroll"
                 >
-                  {docSlots[slotIndex].map((item, index) => (
-                    <p
-                      key={index}
-                      onClick={() => setSlotTime(item.time)}
-                      className={`px-5 py-2 rounded-full text-sm font-medium cursor-pointer whitespace-nowrap transition-all duration-200 ${
-                        slotTime === item.time
-                          ? "bg-blue-600 text-white shadow-md scale-105"
-                          : "bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 hover:shadow-sm"
-                      }`}
-                    >
-                      {item.time}
-                    </p>
-                  ))}
+                  {docSlots[slotIndex].length === 0 ? (
+                    <p className="text-sm text-slate-400 py-2">No slots available for this day.</p>
+                  ) : (
+                    docSlots[slotIndex].map((item, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setSlotTime(item.time)}
+                        className={`px-5 py-2 rounded-full text-xs font-bold cursor-pointer whitespace-nowrap transition-all duration-200 border ${
+                          slotTime === item.time
+                            ? "bg-gradient-to-r from-primary to-indigo-600 text-white border-primary shadow-md shadow-primary/20 scale-105"
+                            : "bg-slate-50 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-primary-400 hover:bg-slate-100 dark:hover:bg-slate-700"
+                        }`}
+                      >
+                        {item.time}
+                      </button>
+                    ))
+                  )}
                 </div>
 
                 {/* Right Arrow */}
                 <button
                   onClick={() => scrollRight(timeScrollRef)}
-                  className="absolute -right-5 md:-right-8 z-20 bg-white border border-gray-300 shadow-md hover:shadow-lg rounded-full p-2 flex items-center justify-center transition-all duration-200"
+                  className="absolute -right-3 md:-right-5 z-20 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-md rounded-full p-2.5 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-primary transition"
                 >
-                  <FaChevronRight className="text-gray-600 hover:text-blue-600" />
+                  <FaChevronRight size={12} />
                 </button>
               </div>
-            </>
+            </div>
           )}
 
-          <button
-            onClick={bookAppointment}
-            disabled={slotIndex === null || !slotTime}
-            className={`w-full sm:w-auto mt-10 px-10 py-3 rounded-full font-semibold shadow-md transition-all ${
-              slotIndex !== null && slotTime
-                ? "bg-blue-600 text-white hover:bg-blue-700"
-                : "bg-gray-300 text-gray-600 cursor-not-allowed"
-            }`}
-          >
-            Book Appointment
-          </button>
+          {/* Book Appointment CTA */}
+          <div className="mt-8 pt-4">
+            <button
+              onClick={bookAppointment}
+              disabled={slotIndex === null || !slotTime}
+              className={`w-full sm:w-auto px-10 py-3.5 rounded-full text-sm font-bold shadow-lg transition-all duration-200 active:scale-95 ${
+                slotIndex !== null && slotTime
+                  ? "bg-gradient-to-r from-primary to-indigo-600 hover:from-primary-600 hover:to-indigo-700 text-white shadow-primary/25 hover:shadow-glow cursor-pointer"
+                  : "bg-slate-200 dark:bg-slate-800 text-slate-400 dark:text-slate-600 cursor-not-allowed shadow-none"
+              }`}
+            >
+              {slotTime ? `Confirm Booking for ${slotTime}` : "Select Slot to Book"}
+            </button>
+          </div>
+
         </div>
 
         <RelatedDoctors speciality={docInfo.speciality} docId={docId} />
@@ -271,3 +312,4 @@ const Appointment = () => {
 };
 
 export default Appointment;
+
