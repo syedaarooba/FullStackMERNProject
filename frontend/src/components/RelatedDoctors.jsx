@@ -18,7 +18,7 @@ const RelatedDoctors = ({ speciality, docId }) => {
 
     return (
         <section className='flex flex-col items-center gap-4 my-16'>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-50 dark:bg-slate-800 text-primary dark:text-indigo-400 text-xs font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-50 dark:bg-slate-800 text-primary dark:text-accent-mint text-xs font-bold uppercase tracking-wider">
                 Recommendations
             </div>
             <h2 className='text-2xl sm:text-3xl font-extrabold tracking-tight text-center text-slate-900 dark:text-white'>
@@ -32,10 +32,10 @@ const RelatedDoctors = ({ speciality, docId }) => {
                 {relDoc.map((item, index) => (
                     <div
                         onClick={() => { navigate(`/appointment/${item._id}`); window.scrollTo(0, 0); }}
-                        className='group bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:border-primary-500/40 dark:hover:border-indigo-500/40 hover:-translate-y-2 transition-all duration-300 cursor-pointer flex flex-col justify-between'
+                        className='group bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:border-primary-500/40 dark:hover:border-primary-500/40 hover:-translate-y-2 transition-all duration-300 cursor-pointer flex flex-col justify-between'
                         key={index}
                     >
-                        <div className='bg-gradient-to-b from-indigo-50/60 to-slate-100/60 dark:from-slate-800 dark:to-slate-800/60 overflow-hidden flex items-center justify-center relative'>
+                        <div className='bg-gradient-to-b from-emerald-50/60 to-slate-100/60 dark:from-slate-800 dark:to-slate-800/60 overflow-hidden flex items-center justify-center relative'>
                             <img
                                 className='w-full h-52 object-cover object-top group-hover:scale-105 transition-transform duration-500'
                                 src={item.image}
@@ -58,10 +58,10 @@ const RelatedDoctors = ({ speciality, docId }) => {
                                 <span>{item.available ? 'Available' : 'Unavailable'}</span>
                             </div>
 
-                            <h3 className='text-slate-900 dark:text-white text-lg font-bold group-hover:text-primary dark:group-hover:text-indigo-400 transition-colors duration-200 mt-1'>
+                            <h3 className='text-slate-900 dark:text-white text-lg font-bold group-hover:text-primary dark:group-hover:text-accent-mint transition-colors duration-200 mt-1'>
                                 {item.name}
                             </h3>
-                            <p className='text-primary dark:text-indigo-400 text-xs font-semibold uppercase tracking-wider'>
+                            <p className='text-primary dark:text-accent-mint text-xs font-semibold uppercase tracking-wider'>
                                 {item.speciality}
                             </p>
                         </div>

@@ -1,33 +1,34 @@
-<svg width="220" height="48" viewBox="0 0 220 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="240" height="48" viewBox="0 0 240 48" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="admin-logo-grad" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#4F46E5" />
-      <stop offset="100%" stop-color="#06B6D4" />
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#14B8A6" />
     </linearGradient>
-    <filter id="admin-subtle-shadow" x="0" y="0" width="48" height="48" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#4F46E5" flood-opacity="0.25"/>
-    </filter>
   </defs>
 
   <!-- Medical Cross Badge -->
-  <g filter="url(#admin-subtle-shadow)">
+  <g>
     <rect x="4" y="4" width="40" height="40" rx="12" fill="url(#admin-logo-grad)" />
     <rect x="5" y="5" width="38" height="38" rx="11" stroke="white" stroke-opacity="0.2" stroke-width="1.5" />
     <rect x="22" y="14" width="4" height="20" rx="2" fill="white" />
     <rect x="14" y="22" width="20" height="4" rx="2" fill="white" />
-    <circle cx="24" cy="24" r="2.5" fill="#06B6D4" />
+    <circle cx="24" cy="24" r="2.5" fill="#34D399" />
     <circle cx="24" cy="24" r="1.2" fill="white" />
   </g>
 
   <!-- Wordmark -->
-  <text x="56" y="29" font-family="'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif" font-weight="700" font-size="22" letter-spacing="-0.5" fill="#0F172A">
-    Prescripto
+  <text x="56" y="27" font-family="'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif" font-weight="700" font-size="20" letter-spacing="-0.5" fill="#0F172A">
+    CarePulse
   </text>
-  <circle cx="166" cy="18" r="3" fill="#06B6D4" />
 
-  <!-- Admin Subtitle -->
-  <text x="57" y="41" font-family="'Outfit', system-ui, sans-serif" font-weight="600" font-size="8" letter-spacing="1.8" fill="#4F46E5">
-    ADMIN PANEL
+  <!-- Admin Tag -->
+  <rect x="160" y="14" width="60" height="18" rx="5" fill="#059669" fill-opacity="0.12" />
+  <text x="166" y="26" font-family="'Outfit', system-ui, sans-serif" font-weight="700" font-size="9" letter-spacing="1" fill="#059669">
+    PANEL
+  </text>
+
+  <!-- Subtitle -->
+  <text x="57" y="40" font-family="'Outfit', system-ui, sans-serif" font-weight="600" font-size="8" letter-spacing="2" fill="#059669">
+    ADMINISTRATION
   </text>
 </svg>
-

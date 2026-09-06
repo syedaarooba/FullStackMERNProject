@@ -145,7 +145,7 @@ const Appointment = () => {
         <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col md:flex-row gap-8 items-start">
           
           {/* Doctor Image */}
-          <div className="w-full md:w-72 flex-shrink-0 bg-gradient-to-b from-indigo-50/60 to-slate-100/60 dark:from-slate-800 dark:to-slate-800/80 rounded-2xl overflow-hidden p-2 flex items-center justify-center">
+          <div className="w-full md:w-72 flex-shrink-0 bg-gradient-to-b from-emerald-50/60 to-slate-100/60 dark:from-slate-800 dark:to-slate-800/80 rounded-2xl overflow-hidden p-2 flex items-center justify-center">
             <img
               className="w-full h-72 object-cover object-top rounded-xl"
               src={docInfo.image}
@@ -164,14 +164,14 @@ const Appointment = () => {
               </div>
 
               <div className="flex flex-wrap items-center gap-2.5 mt-2">
-                <span className="text-sm font-semibold text-primary dark:text-indigo-400">
+                <span className="text-sm font-semibold text-primary dark:text-accent-mint">
                   {docInfo.speciality}
                 </span>
                 <span className="text-xs text-slate-400">•</span>
                 <span className="text-xs font-medium text-slate-600 dark:text-slate-300">
                   {docInfo.degree}
                 </span>
-                <span className="text-xs px-2.5 py-0.5 rounded-full font-bold bg-primary-50 dark:bg-slate-800 text-primary dark:text-indigo-400">
+                <span className="text-xs px-2.5 py-0.5 rounded-full font-bold bg-primary-50 dark:bg-slate-800 text-primary dark:text-accent-mint">
                   {docInfo.experience}
                 </span>
               </div>
@@ -190,7 +190,7 @@ const Appointment = () => {
               <span className="text-sm text-slate-500 dark:text-slate-400 font-medium">
                 Appointment Fee:
               </span>
-              <span className="text-lg font-extrabold text-primary dark:text-indigo-400 bg-primary-50 dark:bg-slate-800 px-3.5 py-1 rounded-xl">
+              <span className="text-lg font-extrabold text-primary dark:text-accent-mint bg-primary-50 dark:bg-slate-800 px-3.5 py-1 rounded-xl">
                 {currencySymbol}{docInfo.fees}
               </span>
             </div>
@@ -202,7 +202,7 @@ const Appointment = () => {
         <div className="mt-12 bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm">
           
           <h2 className="flex items-center gap-2 text-xl font-bold text-slate-900 dark:text-white mb-5">
-            <FaCalendarAlt className="text-primary dark:text-indigo-400" /> 
+            <FaCalendarAlt className="text-primary dark:text-accent-mint" /> 
             <span>Select Appointment Date</span>
           </h2>
 
@@ -221,8 +221,8 @@ const Appointment = () => {
                   }}
                   className={`min-w-[76px] sm:min-w-[85px] text-center rounded-2xl py-4 px-3 cursor-pointer transition-all duration-300 border ${
                     slotIndex === index
-                      ? "bg-gradient-to-tr from-primary to-indigo-600 text-white border-primary shadow-lg shadow-primary/25 scale-105"
-                      : "bg-slate-50 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-primary-400 dark:hover:border-indigo-400"
+                      ? "bg-gradient-to-tr from-primary to-teal-600 text-white border-primary shadow-lg shadow-primary/25 scale-105"
+                      : "bg-slate-50 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-primary-400 dark:hover:border-primary-400"
                   }`}
                 >
                   <p className="text-xs font-bold tracking-wider uppercase opacity-80">
@@ -240,7 +240,7 @@ const Appointment = () => {
           {slotIndex !== null && (
             <div className="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800">
               <h3 className="flex items-center gap-2 text-lg font-bold text-slate-900 dark:text-white mb-4">
-                <FaClock className="text-primary dark:text-indigo-400" /> 
+                <FaClock className="text-primary dark:text-accent-mint" /> 
                 <span>Select Time Slot</span>
               </h3>
 
@@ -267,7 +267,7 @@ const Appointment = () => {
                         onClick={() => setSlotTime(item.time)}
                         className={`px-5 py-2 rounded-full text-xs font-bold cursor-pointer whitespace-nowrap transition-all duration-200 border ${
                           slotTime === item.time
-                            ? "bg-gradient-to-r from-primary to-indigo-600 text-white border-primary shadow-md shadow-primary/20 scale-105"
+                            ? "bg-gradient-to-r from-primary to-teal-600 text-white border-primary shadow-md shadow-primary/20 scale-105"
                             : "bg-slate-50 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-primary-400 hover:bg-slate-100 dark:hover:bg-slate-700"
                         }`}
                       >
@@ -295,7 +295,7 @@ const Appointment = () => {
               disabled={slotIndex === null || !slotTime}
               className={`w-full sm:w-auto px-10 py-3.5 rounded-full text-sm font-bold shadow-lg transition-all duration-200 active:scale-95 ${
                 slotIndex !== null && slotTime
-                  ? "bg-gradient-to-r from-primary to-indigo-600 hover:from-primary-600 hover:to-indigo-700 text-white shadow-primary/25 hover:shadow-glow cursor-pointer"
+                  ? "bg-gradient-to-r from-primary to-teal-600 hover:from-primary-600 hover:to-teal-700 text-white shadow-primary/25 hover:shadow-glow cursor-pointer"
                   : "bg-slate-200 dark:bg-slate-800 text-slate-400 dark:text-slate-600 cursor-not-allowed shadow-none"
               }`}
             >

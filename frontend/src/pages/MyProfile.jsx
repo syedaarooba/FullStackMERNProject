@@ -51,7 +51,7 @@ const MyProfile = () => {
       {/* Header */}
       <div className="mb-8 flex items-center justify-between">
         <div>
-          <span className="inline-block text-xs font-bold uppercase tracking-widest text-primary dark:text-indigo-400 mb-1">
+          <span className="inline-block text-xs font-bold uppercase tracking-widest text-primary dark:text-accent-mint mb-1">
             Account Center
           </span>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
@@ -65,7 +65,7 @@ const MyProfile = () => {
         {!isEdit && (
           <button
             onClick={() => setIsEdit(true)}
-            className="hidden sm:inline-flex items-center gap-2 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 hover:text-primary dark:hover:text-indigo-400 px-5 py-2.5 rounded-full text-xs font-bold shadow-sm hover:border-primary transition"
+            className="hidden sm:inline-flex items-center gap-2 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 hover:text-primary dark:hover:text-accent-mint px-5 py-2.5 rounded-full text-xs font-bold shadow-sm hover:border-primary transition"
           >
             <FiEdit3 /> Edit Profile
           </button>
@@ -141,14 +141,14 @@ const MyProfile = () => {
             {isEdit ? (
               <button
                 onClick={updateUserProfileData}
-                className="w-full bg-gradient-to-r from-primary to-indigo-600 text-white py-3 rounded-2xl text-sm font-bold shadow-md shadow-primary/25 hover:shadow-glow hover:scale-102 active:scale-95 transition"
+                className="w-full bg-gradient-to-r from-primary to-teal-600 text-white py-3 rounded-2xl text-sm font-bold shadow-md shadow-primary/25 hover:shadow-glow hover:scale-102 active:scale-95 transition"
               >
                 Save Changes
               </button>
             ) : (
               <button
                 onClick={() => setIsEdit(true)}
-                className="w-full border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 py-2.5 rounded-2xl text-sm font-bold hover:border-primary hover:text-primary dark:hover:text-indigo-400 transition"
+                className="w-full border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 py-2.5 rounded-2xl text-sm font-bold hover:border-primary hover:text-primary dark:hover:text-accent-mint transition"
               >
                 Edit Profile
               </button>
@@ -301,7 +301,7 @@ const MyProfile = () => {
               <div className="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row gap-3">
                 <button
                   onClick={updateUserProfileData}
-                  className="flex-1 bg-gradient-to-r from-primary to-indigo-600 text-white py-3 rounded-2xl font-bold shadow-md hover:shadow-glow transition"
+                  className="flex-1 bg-gradient-to-r from-primary to-teal-600 text-white py-3 rounded-2xl font-bold shadow-md hover:shadow-glow transition"
                 >
                   Save Information
                 </button>

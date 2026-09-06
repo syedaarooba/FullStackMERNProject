@@ -11,12 +11,12 @@ const Doctors = () => {
   const { doctors } = useContext(AppContext)
 
   const specialities = [
-    'General physician',
-    'Gynecologist',
     'Dermatologist',
     'Pediatricians',
     'Neurologist',
-    'Gastroenterologist'
+    'General physician',
+    'Gastroenterologist',
+    'Gynecologist'
   ];
 
   const applyFilter = () => {
@@ -35,7 +35,7 @@ const Doctors = () => {
     <div className='py-6 sm:py-8'>
       {/* Header Banner */}
       <div className='mb-8'>
-        <span className="inline-block text-xs font-bold uppercase tracking-widest text-primary dark:text-indigo-400 mb-1">
+        <span className="inline-block text-xs font-bold uppercase tracking-widest text-primary dark:text-accent-mint mb-1">
           Specialists Directory
         </span>
         <h1 className='text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight'>
@@ -85,7 +85,7 @@ const Doctors = () => {
             {speciality && (
               <span
                 onClick={() => navigate('/doctors')}
-                className="text-xs font-semibold text-primary dark:text-indigo-400 cursor-pointer hover:underline"
+                className="text-xs font-semibold text-primary dark:text-accent-mint cursor-pointer hover:underline"
               >
                 Reset
               </span>
@@ -96,7 +96,7 @@ const Doctors = () => {
             onClick={() => navigate('/doctors')}
             className={`px-4 py-2.5 rounded-2xl text-sm font-semibold cursor-pointer transition-all duration-200 ${
               !speciality
-                ? 'bg-gradient-to-r from-primary to-indigo-600 text-white shadow-md shadow-primary/20'
+                ? 'bg-gradient-to-r from-primary to-teal-600 text-white shadow-md shadow-primary/20'
                 : 'text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/80'
             }`}
           >
@@ -109,7 +109,7 @@ const Doctors = () => {
               onClick={() => speciality === spec ? navigate('/doctors') : navigate(`/doctors/${spec}`)}
               className={`px-4 py-2.5 rounded-2xl text-sm font-semibold cursor-pointer transition-all duration-200 ${
                 speciality === spec
-                  ? 'bg-gradient-to-r from-primary to-indigo-600 text-white shadow-md shadow-primary/20'
+                  ? 'bg-gradient-to-r from-primary to-teal-600 text-white shadow-md shadow-primary/20'
                   : 'text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/80'
               }`}
             >
@@ -131,9 +131,9 @@ const Doctors = () => {
                 <div
                   key={index}
                   onClick={() => { navigate(`/appointment/${item._id}`); window.scrollTo(0, 0); }}
-                  className='group bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:border-primary-500/40 dark:hover:border-indigo-500/40 hover:-translate-y-2 transition-all duration-300 cursor-pointer flex flex-col justify-between'
+                  className='group bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:border-primary-500/40 dark:hover:border-primary-500/40 hover:-translate-y-2 transition-all duration-300 cursor-pointer flex flex-col justify-between'
                 >
-                  <div className='bg-gradient-to-b from-indigo-50/60 to-slate-100/60 dark:from-slate-800 dark:to-slate-800/60 overflow-hidden flex items-center justify-center relative'>
+                  <div className='bg-gradient-to-b from-emerald-50/60 to-slate-100/60 dark:from-slate-800 dark:to-slate-800/60 overflow-hidden flex items-center justify-center relative'>
                     <img
                       className='w-full h-56 object-cover object-top group-hover:scale-105 transition-transform duration-500'
                       src={item.image}
@@ -161,10 +161,10 @@ const Doctors = () => {
                       <span>{item.available ? 'Available' : 'Unavailable'}</span>
                     </div>
 
-                    <h3 className='text-slate-900 dark:text-white text-lg font-bold group-hover:text-primary dark:group-hover:text-indigo-400 transition-colors duration-200 mt-1'>
+                    <h3 className='text-slate-900 dark:text-white text-lg font-bold group-hover:text-primary dark:group-hover:text-accent-mint transition-colors duration-200 mt-1'>
                       {item.name}
                     </h3>
-                    <p className='text-primary dark:text-indigo-400 text-xs font-semibold uppercase tracking-wider'>
+                    <p className='text-primary dark:text-accent-mint text-xs font-semibold uppercase tracking-wider'>
                       {item.speciality}
                     </p>
                   </div>

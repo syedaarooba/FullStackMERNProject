@@ -37,8 +37,8 @@ const Navbar = () => {
               key={idx}
               to={link.path}
               className={({ isActive }) =>
-                `relative py-1.5 transition-colors duration-200 hover:text-primary-600 dark:hover:text-indigo-400 ${
-                  isActive ? "text-primary-600 dark:text-indigo-400" : ""
+                `relative py-1.5 transition-colors duration-200 hover:text-primary-600 dark:hover:text-accent-mint ${
+                  isActive ? "text-primary-600 dark:text-accent-mint" : ""
                 }`
               }
             >
@@ -58,7 +58,7 @@ const Navbar = () => {
             href="https://admin-two-murex.vercel.app/"
             target="_blank"
             rel="noreferrer"
-            className="border border-slate-200 dark:border-slate-700 px-4 py-1.5 rounded-full text-xs font-semibold text-slate-700 dark:text-slate-300 hover:border-primary-500 hover:text-primary-600 dark:hover:text-indigo-400 hover:bg-primary-50/50 dark:hover:bg-slate-800 transition-all duration-200"
+            className="border border-slate-200 dark:border-slate-700 px-4 py-1.5 rounded-full text-xs font-semibold text-slate-700 dark:text-slate-300 hover:border-primary-500 hover:text-primary-600 dark:hover:text-accent-mint hover:bg-primary-50/50 dark:hover:bg-slate-800 transition-all duration-200"
           >
             Admin Panel
           </a>
@@ -77,7 +77,7 @@ const Navbar = () => {
             {theme === "dark" ? (
               <FiSun className="w-5 h-5 text-amber-400 rotate-0 transition-transform duration-300" />
             ) : (
-              <FiMoon className="w-5 h-5 text-indigo-600 rotate-0 transition-transform duration-300" />
+              <FiMoon className="w-5 h-5 text-emerald-600 rotate-0 transition-transform duration-300" />
             )}
           </button>
 
@@ -127,7 +127,7 @@ const Navbar = () => {
           ) : (
             <button
               onClick={() => navigate("/login")}
-              className="hidden md:inline-flex items-center justify-center bg-gradient-to-r from-primary to-indigo-600 hover:from-primary-600 hover:to-indigo-700 text-white px-6 py-2.5 rounded-full text-sm font-semibold shadow-md shadow-primary/20 hover:shadow-glow transition-all duration-200 active:scale-95"
+              className="hidden md:inline-flex items-center justify-center bg-gradient-to-r from-primary to-teal-600 hover:from-primary-600 hover:to-teal-700 text-white px-6 py-2.5 rounded-full text-sm font-semibold shadow-md shadow-primary/20 hover:shadow-glow transition-all duration-200 active:scale-95"
             >
               Create Account
             </button>
@@ -175,7 +175,7 @@ const Navbar = () => {
                   className={({ isActive }) =>
                     `px-4 py-3 rounded-xl transition ${
                       isActive
-                        ? "bg-primary-50 dark:bg-slate-800 text-primary dark:text-indigo-400"
+                        ? "bg-primary-50 dark:bg-slate-800 text-primary dark:text-accent-mint"
                         : "hover:bg-slate-50 dark:hover:bg-slate-800"
                     }`
                   }
@@ -214,7 +214,7 @@ const Navbar = () => {
                   navigate("/login");
                   setShowMenu(false);
                 }}
-                className="w-full bg-gradient-to-r from-primary to-indigo-600 text-white py-3 rounded-xl font-semibold shadow-md"
+                className="w-full bg-gradient-to-r from-primary to-teal-600 text-white py-3 rounded-xl font-semibold shadow-md"
               >
                 Create Account
               </button>

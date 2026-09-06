@@ -107,7 +107,7 @@ const MyAppointments = () => {
       
       {/* Header */}
       <div className="mb-8">
-        <span className="inline-block text-xs font-bold uppercase tracking-widest text-primary dark:text-indigo-400 mb-1">
+        <span className="inline-block text-xs font-bold uppercase tracking-widest text-primary dark:text-accent-mint mb-1">
           Patient Portal
         </span>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
@@ -120,7 +120,7 @@ const MyAppointments = () => {
 
       {appointments.length === 0 ? (
         <div className="p-12 text-center bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-3xl shadow-sm space-y-4">
-          <div className="w-16 h-16 rounded-2xl bg-primary-50 dark:bg-slate-800 flex items-center justify-center mx-auto text-primary dark:text-indigo-400 text-2xl">
+          <div className="w-16 h-16 rounded-2xl bg-primary-50 dark:bg-slate-800 flex items-center justify-center mx-auto text-primary dark:text-accent-mint text-2xl">
             <FiCalendar />
           </div>
           <div>
@@ -131,7 +131,7 @@ const MyAppointments = () => {
           </div>
           <button
             onClick={() => navigate('/doctors')}
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-indigo-600 text-white px-7 py-3 rounded-full text-sm font-bold shadow-md hover:shadow-glow transition"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-teal-600 text-white px-7 py-3 rounded-full text-sm font-bold shadow-md hover:shadow-glow transition"
           >
             Find a Doctor
           </button>
@@ -151,7 +151,7 @@ const MyAppointments = () => {
                 />
 
                 <div className="space-y-1.5">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-primary dark:text-indigo-400">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-primary dark:text-accent-mint">
                     {item.docData?.speciality}
                   </span>
                   <h3 className="text-xl font-extrabold text-slate-900 dark:text-white">
@@ -166,7 +166,7 @@ const MyAppointments = () => {
                   )}
 
                   <div className="pt-2 flex items-center gap-2">
-                    <span className="inline-flex items-center gap-1.5 bg-primary-50 dark:bg-slate-800 text-primary dark:text-indigo-400 px-3 py-1 rounded-xl text-xs font-bold">
+                    <span className="inline-flex items-center gap-1.5 bg-primary-50 dark:bg-slate-800 text-primary dark:text-accent-mint px-3 py-1 rounded-xl text-xs font-bold">
                       <FaCalendarAlt size={10} />
                       {slotDateFormat(item.slotDate)} | {item.slotTime}
                     </span>

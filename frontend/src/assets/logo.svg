@@ -1,20 +1,20 @@
 <svg width="220" height="48" viewBox="0 0 220 48" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="logo-grad" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#4F46E5" />
-      <stop offset="100%" stop-color="#06B6D4" />
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#14B8A6" />
     </linearGradient>
     <filter id="subtle-shadow" x="0" y="0" width="48" height="48" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#4F46E5" flood-opacity="0.25"/>
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#059669" flood-opacity="0.25"/>
     </filter>
   </defs>
 
   <style>
     .brand-text { fill: #0F172A; }
-    .brand-sub { fill: #4F46E5; }
+    .brand-sub { fill: #059669; }
     @media (prefers-color-scheme: dark) {
       .brand-text { fill: #F8FAFC; }
-      .brand-sub { fill: #38BDF8; }
+      .brand-sub { fill: #34D399; }
     }
   </style>
 
@@ -26,19 +26,18 @@
     <rect x="22" y="14" width="4" height="20" rx="2" fill="white" />
     <rect x="14" y="22" width="20" height="4" rx="2" fill="white" />
     <!-- Pulse Center Core -->
-    <circle cx="24" cy="24" r="2.5" fill="#06B6D4" />
+    <circle cx="24" cy="24" r="2.5" fill="#34D399" />
     <circle cx="24" cy="24" r="1.2" fill="white" />
   </g>
 
   <!-- Wordmark -->
   <text x="56" y="29" font-family="'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif" font-weight="700" font-size="22" letter-spacing="-0.5" class="brand-text">
-    Prescripto
+    CarePulse
   </text>
-  <circle cx="166" cy="18" r="3" fill="#06B6D4" />
+  <circle cx="168" cy="18" r="3" fill="#10B981" />
 
   <!-- Subtitle -->
   <text x="57" y="41" font-family="'Outfit', system-ui, sans-serif" font-weight="600" font-size="8" letter-spacing="2.2" class="brand-sub">
     HEALTHCARE
   </text>
 </svg>
-

@@ -1,4 +1,5 @@
 import React from "react";
+import { assets } from "../assets/assets";
 import {
   FaFacebookF,
   FaTwitter,
@@ -28,7 +29,7 @@ const Footer = () => {
           <Logo onClick={() => handleNavigate("/")} />
 
           <p className="text-slate-500 dark:text-slate-400 leading-relaxed text-sm max-w-sm pt-2">
-            <span className="font-semibold text-primary dark:text-indigo-400">Prescripto</span>{" "}
+            <span className="font-semibold text-primary dark:text-accent-mint">CarePulse</span>{" "}
             makes healthcare simple, fast, and accessible. Book certified doctors,
             manage appointments, and consult with total confidence.
           </p>
@@ -45,7 +46,7 @@ const Footer = () => {
                 href={item.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 flex items-center justify-center bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm rounded-full text-primary dark:text-indigo-400 hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white hover:scale-110 transition-all duration-200"
+                className="w-9 h-9 flex items-center justify-center bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm rounded-full text-primary dark:text-accent-mint hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white hover:scale-110 transition-all duration-200"
               >
                 <item.icon size={14} />
               </a>
@@ -62,38 +63,41 @@ const Footer = () => {
             {[
               { name: "Home", path: "/" },
               { name: "About Us", path: "/about" },
-              { name: "Our Doctors", path: "/doctors" },
-              { name: "Contact", path: "/contact" },
-            ].map((item, index) => (
+              { name: "All Specialists", path: "/doctors" },
+              { name: "Contact & Support", path: "/contact" },
+            ].map((item, idx) => (
               <li
-                key={index}
+                key={idx}
                 onClick={() => handleNavigate(item.path)}
-                className="hover:text-primary dark:hover:text-indigo-400 cursor-pointer transition-colors duration-200 font-medium"
+                className="cursor-pointer hover:text-primary dark:hover:text-accent-mint transition-colors duration-200 flex items-center gap-1.5"
               >
+                <span className="text-slate-400 dark:text-slate-600">›</span>
                 {item.name}
               </li>
             ))}
           </ul>
         </div>
 
-        {/* ---------- Services Links ---------- */}
+        {/* ---------- Medical Specialties ---------- */}
         <div>
           <h3 className="font-bold text-base sm:text-lg mb-4 text-slate-900 dark:text-white tracking-tight">
-            Our Services
+            Specialties
           </h3>
           <ul className="space-y-2.5 text-sm">
             {[
-              "Online Consultation",
-              "Appointment Scheduling",
-              "Health Checkups",
-              "Medical Records",
-            ].map((service, index) => (
+              { name: "Dermatologist", path: "/doctors/Dermatologist" },
+              { name: "Pediatricians", path: "/doctors/Pediatricians" },
+              { name: "Neurologist", path: "/doctors/Neurologist" },
+              { name: "General physician", path: "/doctors/General%20physician" },
+              { name: "Gynecologist", path: "/doctors/Gynecologist" },
+            ].map((item, idx) => (
               <li
-                key={index}
-                onClick={() => handleNavigate("/doctors")}
-                className="hover:text-primary dark:hover:text-indigo-400 cursor-pointer transition-colors duration-200 font-medium"
+                key={idx}
+                onClick={() => handleNavigate(item.path)}
+                className="cursor-pointer hover:text-primary dark:hover:text-accent-mint transition-colors duration-200 flex items-center gap-1.5"
               >
-                {service}
+                <span className="text-slate-400 dark:text-slate-600">›</span>
+                {item.name}
               </li>
             ))}
           </ul>
@@ -105,24 +109,24 @@ const Footer = () => {
             Get in Touch
           </h3>
           <ul className="space-y-3.5 text-sm">
-            <li className="flex items-center gap-3 font-medium hover:text-primary dark:hover:text-indigo-400 transition-colors duration-200">
-              <div className="w-8 h-8 rounded-full bg-primary-50 dark:bg-slate-800 flex items-center justify-center text-primary dark:text-indigo-400">
+            <li className="flex items-center gap-3 font-medium hover:text-primary dark:hover:text-accent-mint transition-colors duration-200">
+              <div className="w-8 h-8 rounded-full bg-primary-50 dark:bg-slate-800 flex items-center justify-center text-primary dark:text-accent-mint">
                 <FaPhoneAlt size={12} />
               </div>
               <span>+1 (555) 987-6543</span>
             </li>
 
-            <li className="flex items-center gap-3 font-medium hover:text-primary dark:hover:text-indigo-400 transition-colors duration-200">
-              <div className="w-8 h-8 rounded-full bg-primary-50 dark:bg-slate-800 flex items-center justify-center text-primary dark:text-indigo-400">
+            <li className="flex items-center gap-3 font-medium hover:text-primary dark:hover:text-accent-mint transition-colors duration-200">
+              <div className="w-8 h-8 rounded-full bg-primary-50 dark:bg-slate-800 flex items-center justify-center text-primary dark:text-accent-mint">
                 <FaEnvelope size={12} />
               </div>
-              <a href="mailto:support@prescripto.com" className="hover:underline">
-                support@prescripto.com
+              <a href="mailto:support@carepulse.app" className="hover:underline">
+                support@carepulse.app
               </a>
             </li>
 
-            <li className="flex items-start gap-3 hover:text-primary dark:hover:text-indigo-400 transition-colors duration-200">
-              <div className="w-8 h-8 rounded-full bg-primary-50 dark:bg-slate-800 flex items-center justify-center text-primary dark:text-indigo-400 mt-0.5">
+            <li className="flex items-start gap-3 hover:text-primary dark:hover:text-accent-mint transition-colors duration-200">
+              <div className="w-8 h-8 rounded-full bg-primary-50 dark:bg-slate-800 flex items-center justify-center text-primary dark:text-accent-mint mt-0.5">
                 <FaMapMarkerAlt size={13} />
               </div>
               <span className="leading-relaxed">
@@ -137,7 +141,7 @@ const Footer = () => {
       <div className="w-full bg-slate-200/80 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800/80 text-center py-4 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
         <p>
           © {new Date().getFullYear()}{" "}
-          <span className="font-bold text-slate-800 dark:text-slate-200">Prescripto</span> — Empowering better health, one click at a time.
+          <span className="font-bold text-slate-800 dark:text-slate-200">CarePulse</span> — Empowering better health, one click at a time.
         </p>
       </div>
     </footer>
@@ -145,4 +149,3 @@ const Footer = () => {
 };
 
 export default Footer;
-

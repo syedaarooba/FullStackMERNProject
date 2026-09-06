@@ -31,7 +31,7 @@ const Contact = () => {
     setIsSubmitting(true);
     setTimeout(() => {
       setIsSubmitting(false);
-      toast.success("Thank you! Your message has been received. Our team will contact you shortly.");
+      toast.success("Thank you! Your message has been received. Our CarePulse team will contact you shortly.");
       setFormData({ name: "", email: "", subject: "", message: "" });
     }, 600);
   };
@@ -41,10 +41,10 @@ const Contact = () => {
       {/* -------- Header -------- */}
       <div className="text-center max-w-2xl mx-auto mb-12">
         <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20 mb-3">
-          <FiMessageSquare className="w-3.5 h-3.5" /> Direct Support
+          <FiMessageSquare className="w-3.5 h-3.5" /> Direct Patient Support
         </span>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-          Get in Touch with <span className="bg-gradient-to-r from-primary to-accent-cyan bg-clip-text text-transparent">Prescripto</span>
+          Get in Touch with <span className="bg-gradient-to-r from-primary to-accent-mint bg-clip-text text-transparent">CarePulse</span>
         </h1>
         <p className="mt-3 text-slate-600 dark:text-slate-400 text-sm sm:text-base">
           Have questions about booking appointments or need medical technical assistance? Our dedicated care team is available 24/7.
@@ -53,17 +53,17 @@ const Contact = () => {
 
       {/* -------- Main Grid -------- */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        {/* Left Column: Image + Info Cards */}
+        {/* Left Column: Image (Shuffled to about_image) + Info Cards */}
         <div className="lg:col-span-5 flex flex-col gap-6">
           <div className="relative group overflow-hidden rounded-3xl shadow-lg border border-slate-200/80 dark:border-slate-800">
             <img
               className="w-full h-64 sm:h-72 object-cover transition-transform duration-500 group-hover:scale-105"
-              src={assets.contact_image}
-              alt="Contact Prescripto Healthcare"
+              src={assets.about_image}
+              alt="CarePulse Consultation Headquarters"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent flex items-end p-6">
               <div>
-                <p className="text-white font-bold text-lg">Central Medical Complex</p>
+                <p className="text-white font-bold text-lg">CarePulse Diagnostic Wing</p>
                 <p className="text-slate-300 text-xs mt-0.5">Accredited by International Healthcare Commission</p>
               </div>
             </div>
@@ -80,7 +80,7 @@ const Contact = () => {
                 <FiMapPin className="w-4 h-4" />
               </div>
               <div>
-                <p className="font-medium text-slate-900 dark:text-white">Main Clinic & HQ</p>
+                <p className="font-medium text-slate-900 dark:text-white">CarePulse Medical HQ</p>
                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">
                   54709 Willms Station, Suite 350<br />
                   Washington, DC 20001, USA
@@ -106,8 +106,8 @@ const Contact = () => {
               </div>
               <div>
                 <p className="font-medium text-slate-900 dark:text-white">Email Assistance</p>
-                <a href="mailto:support@prescripto.com" className="text-xs text-primary hover:underline font-semibold">
-                  support@prescripto.com
+                <a href="mailto:support@carepulse.app" className="text-xs text-primary hover:underline font-semibold">
+                  support@carepulse.app
                 </a>
               </div>
             </div>
@@ -184,7 +184,7 @@ const Contact = () => {
                     type="text"
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    placeholder="Appointment / Billing / General Inquiry"
+                    placeholder="Appointment / Care / Technical Support"
                     className="w-full text-sm outline-none bg-transparent text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600"
                   />
                 </div>
@@ -202,7 +202,7 @@ const Contact = () => {
                     required
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Tell us how we can help you..."
+                    placeholder="Tell our CarePulse specialists how we can help you..."
                     className="w-full text-sm outline-none bg-transparent resize-none text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600"
                   />
                 </div>
@@ -212,7 +212,7 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="mt-2 w-full py-3 px-6 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-primary to-primary-600 hover:from-primary-600 hover:to-primary-700 shadow-md shadow-primary/25 hover:shadow-lg hover:shadow-primary/35 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70"
+                className="mt-2 w-full py-3 px-6 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-primary to-primary-700 hover:from-primary-600 hover:to-primary-800 shadow-md shadow-primary/25 hover:shadow-lg hover:shadow-primary/35 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70"
               >
                 {isSubmitting ? (
                   <>
@@ -241,7 +241,7 @@ const Contact = () => {
                     Urgent Care Helpline
                   </h4>
                   <p className="text-slate-500 dark:text-slate-400 text-xs">
-                    24/7 emergency triage
+                    24/7 medical triage
                   </p>
                 </div>
               </div>
@@ -252,15 +252,15 @@ const Contact = () => {
 
             <div className="bg-white/70 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-5 hover:border-primary/40 transition-colors group">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-accent-cyan/10 text-accent-cyan flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-accent-teal/10 text-accent-teal flex items-center justify-center">
                   <FiBriefcase className="w-5 h-5" />
                 </div>
                 <div>
                   <h4 className="font-bold text-slate-900 dark:text-white text-sm">
-                    Careers at Prescripto
+                    Careers at CarePulse
                   </h4>
                   <p className="text-slate-500 dark:text-slate-400 text-xs">
-                    Join our medical network
+                    Join our doctor network
                   </p>
                 </div>
               </div>

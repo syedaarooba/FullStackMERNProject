@@ -53,8 +53,8 @@ const Login = () => {
         >
           {/* Header */}
           <div className='text-center space-y-2'>
-            <span className="inline-block text-[11px] font-bold uppercase tracking-widest text-primary dark:text-indigo-400">
-              Prescripto Portal
+            <span className="inline-block text-[11px] font-bold uppercase tracking-widest text-primary dark:text-accent-mint">
+              CarePulse Patient Portal
             </span>
             <h1 className='text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight'>
               {state === 'Sign Up' ? 'Create an Account' : 'Welcome Back'}
@@ -149,7 +149,7 @@ const Login = () => {
 
           <button
             type='submit'
-            className='group w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-primary to-indigo-600 hover:from-primary-600 hover:to-indigo-700 text-white py-3.5 rounded-2xl text-sm font-bold shadow-lg shadow-primary/25 hover:shadow-glow active:scale-95 transition-all duration-200'
+            className='group w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-primary to-teal-600 hover:from-primary-600 hover:to-teal-700 text-white py-3.5 rounded-2xl text-sm font-bold shadow-lg shadow-primary/25 hover:shadow-glow active:scale-95 transition-all duration-200'
           >
             <span>{state === 'Sign Up' ? 'Create Account' : 'Sign In'}</span>
             <FiArrowRight className='group-hover:translate-x-1 transition-transform' />
@@ -161,7 +161,7 @@ const Login = () => {
                 Already have an account?{' '}
                 <span
                   onClick={() => setState('Login')}
-                  className='text-primary dark:text-indigo-400 font-bold hover:underline cursor-pointer'
+                  className='text-primary dark:text-accent-mint font-bold hover:underline cursor-pointer'
                 >
                   Login here
                 </span>
@@ -171,7 +171,7 @@ const Login = () => {
                 Don't have an account?{' '}
                 <span
                   onClick={() => setState('Sign Up')}
-                  className='text-primary dark:text-indigo-400 font-bold hover:underline cursor-pointer'
+                  className='text-primary dark:text-accent-mint font-bold hover:underline cursor-pointer'
                 >
                   Create one now
                 </span>
